@@ -12,3 +12,10 @@ bgdp = web.DataReader('NGDPRSAXDCBRQ','fred',start_date,end_date)
 log_bgdp = np.log(bgdp)
 
 cycle, trend = sm.tsa.filters.hpfilter(log_bgdp, lamb=1600)
+
+plt.plot(log_gdp, label="Original GDP (in log)")
+
+plt.plot(trend, label="Trend")
+
+plt.legend()
+plt.show()
