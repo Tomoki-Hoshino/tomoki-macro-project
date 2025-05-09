@@ -1,3 +1,13 @@
+# pyenv でインストール（まだなら）
+pyenv install 3.11.8
+
+# 仮想環境を作成
+pyenv virtualenv 3.11.8 py311-env
+pyenv activate py311-env
+
+# 必要なライブラリをインストール
+pip install pandas_datareader pandas
+
 import pandas as pd
 import pandas_datareader.data as web
 import matplotlib.pyplot as plt
