@@ -22,7 +22,7 @@ plt.plot(log_gdp, label="Log of Real GDP", color='black')
 
 colors = ['red','green','blue']
 for lam, colar in zip(lambdas,  colors):
-    plt.plot(trends[lam], label=f"HP Trend (λ={lam})", linestyle='--', color=color)
+    plt.plot(trends[lam], label=f"HP Trend (λ={lam})", linestyle='--', color=colors)
 
 plt.title("Log of Brazil Real GDP and HP Trend (1996–2024)")
 plt.xlabel("Date")
