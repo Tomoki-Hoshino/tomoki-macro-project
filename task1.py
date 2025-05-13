@@ -1,7 +1,3 @@
-conda create -n py311-env python=3.11
-conda activate py311-env
-pip install pandas_datareader pandas
-
 import pandas as pd
 import pandas_datareader.data as web
 import matplotlib.pyplot as plt
