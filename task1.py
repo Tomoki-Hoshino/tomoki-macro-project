@@ -8,9 +8,9 @@ start_date = '1996-01-01'
 end_date = '2024-10-01'
 
 bgdp = DataReader('NGDPRSAXDCBRQ','fred',start_date,end_date)
-log_bgdp = np.log(bgdp)
+log_gdp = np.log(bgdp)
 
-cycle, trend = sm.tsa.filters.hpfilter(log_bgdp, lamb=1600)
+cycle, trend = sm.tsa.filters.hpfilter(log_gdp, lamb=1600)
 
 plt.figure(figsize=(12, 6))
 plt.plot(log_gdp, label="Log of Real GDP", color='blue')
