@@ -9,7 +9,7 @@ oecd_countries = [
 
 data = pwt90[
     pwt90['country'].isin(oecd_countries) &
-    pwt90['year'].between(1970, 2010)
+    pwt90['year'].between(1960, 2000)
 ]
 
 relevant_cols = ['countrycode', 'country', 'year', 'rgdpna', 'rkna', 'pop', 'emp', 'avh', 'labsh', 'rtfpna']
