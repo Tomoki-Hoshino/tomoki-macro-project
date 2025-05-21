@@ -16,8 +16,9 @@ relevant_cols = ['countrycode', 'country', 'year', 'rgdpna', 'rkna', 'pop', 'emp
 data = data[relevant_cols].dropna()
 
 data['alpha'] = 1 - data['labsh']
-data['y_n'] = data['rgdpna'] / data['emp']  # Y/N
+  # Y/N
 data['hours'] = data['emp'] * data['avh']  # L
+data['y_n'] = data['rgdpna'] / data['hours'] # Y/L
 data['tfp_term'] = data['rtfpna'] ** (1 / (1 - data['alpha']))  # A^(1/(1-alpha))
 data['cap_term'] = (data['rkna'] / data['rgdpna']) ** (data['alpha'] / (1 - data['alpha']))  # (K/Y)^(alpha/(1-alpha))
 data['lab_term'] = data['hours'] / data['emp']  # L/N
