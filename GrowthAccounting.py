@@ -9,7 +9,7 @@ oecd_countries = [
 
 data = pwt90[
     pwt90['country'].isin(oecd_countries) &
-    pwt90['year'].between(1970, 2010)
+    pwt90['year'].between(1960, 2000)
 ]
 
 relevant_cols = ['countrycode', 'country', 'year', 'rgdpna', 'rkna', 'pop', 'emp', 'avh', 'labsh', 'rtfpna']
@@ -77,7 +77,7 @@ avg_row_data = {
 }
 results_df = pd.concat([results_df, pd.DataFrame([avg_row_data])], ignore_index=True)
 
-print("\nGrowth Accounting in OECD Countries: 1970-2010 period")
+print("\nGrowth Accounting in OECD Countries: 1960-2000 period")
 print("="*85)
 print(results_df.to_string(index=False))
 
