@@ -23,7 +23,7 @@ data['tfp_term'] = data['y_l'] / (data['cap_term']** data['alpha'])  #
 data['lab_term'] = data['hours'] / data['emp']  # L/N
 data = data.sort_values('year').groupby('countrycode').apply(lambda x: x.assign(
     alpha=1 - x['labsh'],
-    y_n_shifted=100 * x['y_n'] / x['y_n'].iloc[0],
+    y_n_shifted=100 * x['y_l'] / x['y_l'].iloc[0],
     tfp_term_shifted=100 * x['tfp_term'] / x['tfp_term'].iloc[0],
     cap_term_shifted=100 * x['cap_term'] / x['cap_term'].iloc[0],
     lab_term_shifted=100 * x['lab_term'] / x['lab_term'].iloc[0]
@@ -39,7 +39,7 @@ def calculate_growth_rates(country_data):
 
     years = end_data['year'] - start_data['year']
 
-    g_y = ((end_data['y_n'] / start_data['y_n']) ** (1/years) - 1) * 100
+    g_y = ((end_data['y_l'] / start_data['y_l']) ** (1/years) - 1) * 100
 
     g_k = ((end_data['cap_term'] / start_data['cap_term']) ** (1/years) - 1) * 100
 
