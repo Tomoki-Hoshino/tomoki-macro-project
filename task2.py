@@ -15,11 +15,11 @@ data = pwt90[
 relevant_cols = ['countrycode', 'country', 'year', 'rgdpna', 'rkna', 'pop', 'emp', 'avh', 'labsh', 'rtfpna']
 data = data[relevant_cols].dropna()
 
-data['alpha'] = data['labsh']
+data['alpha'] = 1-data['labsh']
 data['hours'] = data['emp'] * data['avh']  # L
-data['y_n'] = data['rgdpna'] / data['hours'] # Y/L
-data['tfp_term'] = data['rtfpna'] ** (1 / (1 - data['alpha']))  # A^(1/(1-alpha))
+data['y_l'] = data['rgdpna'] / data['hours'] # Y/L
 data['cap_term'] = data['rkna']/data['hours'] #K/L
+data['tfp_term'] = data['y_l'] / (data['cap_term']** data['alpha'])  #
 data['lab_term'] = data['hours'] / data['emp']  # L/N
 data = data.sort_values('year').groupby('countrycode').apply(lambda x: x.assign(
     alpha=1 - x['labsh'],
