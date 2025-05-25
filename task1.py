@@ -7,24 +7,33 @@ from pandas_datareader.data import DataReader
 start_date = '1996-01-01'
 end_date = '2024-10-01'
 
-bgdp = DataReader('NGDPRSAXDCBRQ','fred',start_date,end_date)
-log_gdp = np.log(bgdp)
+Brazilgdp = DataReader('NGDPRSAXDCBRQ','fred',start_date,end_date)
+log_bgdp = np.log(Brazilgdpgdp)
+
+Japangdp = DataReader('NGDPRSAXDCJPQ','fred',start_date,end_date)
+log_jgdp = np.log(Japangdp)
 
 lambdas = [10,100,1600]
-trends = {}
+Brazil_trends = {}
+Japan_trends = {}
 
 for lam in lambdas:
-    _,trend = sm.tsa.filters.hpfilter(log_gdp, lamb=lam)
-    trends[lam] = trend
+    _, b_trend = sm.tsa.filters.hpfilter(log_bgdp, lamb=lam)
+    _, j_trend = sm.tsa.filters.hpfilter(log_jgdp, lamb=lam)
+    brazil_trends[lam] = b_trend
+    japan_trrends[lam] = j_trend
 
 plt.figure(figsize=(12, 6))
-plt.plot(log_gdp, label="Log of Real GDP", color='black')
+plt.plot(log_jgdp, label="Japan Log GDP", color="gray", linewidth=1.5)
+plt.plot(log_bgdp, label="Brazil Log GDP", color="brack", linewidth=1.5)
 
 colors = ['red','green','blue']
 for lam, color in zip(lambdas,  colors):
-    plt.plot(trends[lam], label=f"HP Trend (λ={lam})", linestyle='--', color=color)
+    plt.plot(trends[lam], label=f"Brazil Trend (λ={lam})", linestyle='--', color=color)
+    plt.plot(japan_trends[lam], label=f"Japan Trend λ={lam}", linestyle=':', color=color)
 
-plt.title("Log of Brazil Real GDP and HP Trend (1996–2024)")
+
+plt.title("Log of Brazil and Japan Real GDP and HP Trend (1996–2024)")
 plt.xlabel("Date")
 plt.ylabel("Log GDP")
 plt.legend()
