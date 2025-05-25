@@ -25,12 +25,12 @@ for lam in lambdas:
 
 plt.figure(figsize=(12, 6))
 plt.plot(log_jgdp, label="Japan Log GDP", color="gray", linewidth=1.5)
-plt.plot(log_bgdp, label="Brazil Log GDP", color="brack", linewidth=1.5)
+plt.plot(log_bgdp, label="Brazil Log GDP", color="black", linewidth=1.5)
 
 colors = ['red','green','blue']
 for lam, color in zip(lambdas,  colors):
-    plt.plot(trends[lam], label=f"Brazil Trend (λ={lam})", linestyle='--', color=color)
-    plt.plot(japan_trends[lam], label=f"Japan Trend λ={lam}", linestyle=':', color=color)
+    plt.plot(Brazil_trends[lam], label=f"Brazil Trend (λ={lam})", linestyle='--', color=color)
+    plt.plot(Japan_trends[lam], label=f"Japan Trend λ={lam}", linestyle=':', color=color)
 
 
 plt.title("Log of Brazil and Japan Real GDP and HP Trend (1996–2024)")
