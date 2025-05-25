@@ -20,7 +20,7 @@ Japan_trends = {}
 for lam in lambdas:
     _, b_trend = sm.tsa.filters.hpfilter(log_bgdp, lamb=lam)
     _, j_trend = sm.tsa.filters.hpfilter(log_jgdp, lamb=lam)
-    Brazilrazil_trends[lam] = b_trend
+    Brazil_trends[lam] = b_trend
     Japan_trrends[lam] = j_trend
 
 plt.figure(figsize=(12, 6))
