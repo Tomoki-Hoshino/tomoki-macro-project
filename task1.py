@@ -8,7 +8,7 @@ start_date = '1996-01-01'
 end_date = '2024-10-01'
 
 Brazilgdp = DataReader('NGDPRSAXDCBRQ','fred',start_date,end_date)
-log_bgdp = np.log(Brazilgdpgdp)
+log_bgdp = np.log(Brazilgdp)
 
 Japangdp = DataReader('NGDPRSAXDCJPQ','fred',start_date,end_date)
 log_jgdp = np.log(Japangdp)
